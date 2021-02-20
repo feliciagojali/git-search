@@ -19,7 +19,7 @@ class Result extends Component {
     }
     componentDidMount= () =>{
         var query = this.props.match.params.name;
-        
+
         fetch("https://api.github.com/search/repositories?q="+query)
 	      .then(res => res.json())
 	      .then(
@@ -35,19 +35,19 @@ class Result extends Component {
 	  }
 
 
-    render() { 
-   
+    render() {
+
         return ( <div>
             <NavBar/>
-            {!this.state.isLoaded && 
+            {!this.state.isLoaded &&
             <div className="center-screen">
                 <Spinner animation="border" role="status">
                 <span className="sr-only">Loading...</span>
                 </Spinner>
             </div>}
-            {this.state.isLoaded && 
-            <div style={{padding:"5%"}}> 
-                
+            {this.state.isLoaded &&
+            <div style={{padding:"5%"}}>
+                <br/><br/>
                  <b style={{fontSize:"30px"}}>{this.state.count} repository results </b>
                  <hr/>
                  {this.state.items.slice(0,this.state.total).map((item,i)=>(
@@ -61,8 +61,8 @@ class Result extends Component {
                             <span>
                                 <img src="https://img.icons8.com/ios/452/star--v1.png" width="13" /> &nbsp;
                             </span>
-                            {item.stargazers_count} 
-                    
+                            {item.stargazers_count}
+
                          {item.language != null && <span>
                              <span>&nbsp;&nbsp;&nbsp;
                                  <img src="https://www.freeiconspng.com/uploads/orange-circle-png-3.png" width="13"/>&nbsp;
@@ -73,19 +73,19 @@ class Result extends Component {
                          {item.open_issues != 0 && <span style={{opacity:"0.8"}}> &nbsp;&nbsp;
                             {item.open_issues} issues need help
                              </span>}
-                                 
-                        
+
+
                         </div>
                          <hr/>
                     </div>
-                        
+
                  ))}
 
                  <Button onClick={this.addItems} variant="outline-dark"> Load more </Button>
             </div>}
-                
+
         </div>);
     }
 }
- 
+
 export default Result;

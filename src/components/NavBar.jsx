@@ -3,17 +3,17 @@ import { Navbar,Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstr
 import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
-    state = { 
+    state = {
         query:null
      }
 
      handleQuery = (e)=>{
          this.setState({query:e.target.value});
      }
-    render() { 
+    render() {
         return ( <div>
-        
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" style={{padding:"1% 5%"}}>
+
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
                 <Navbar.Brand href="/"><img src="https://icon-library.com/images/github-icon-png/github-icon-png-29.jpg" height="40"/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -39,9 +39,9 @@ class NavBar extends Component {
                 <Link to={{pathname:"/search/" + this.state.query}}  className="linkto"><Button  onClick="window.location.reload();" variant="outline-light">Search</Button></Link>
                 </Navbar.Collapse>
             </Navbar>
-        
+
         </div> );
     }
 }
- 
+
 export default NavBar;
